@@ -1,8 +1,8 @@
 Clase Main:  
     Atributos:
     Tiene una matriz 7*24 llamada sismo que almacena los sismos en formato [dia][hora]  
-    opcion: De tipo int guarda la opcion selecionada por el usuario  
-    correr: Booleano Gurda el estado del programa si esta corriendo o esta parado  
+        opcion: De tipo int guarda la opcion selecionada por el usuario  
+        correr: Booleano Gurda el estado del programa si esta corriendo o esta parado  
     Metodos:  
         main: Ejecuta un while con un switch case que le pide al usuario que ingrese una de las opciones  
         y las ejecuta  

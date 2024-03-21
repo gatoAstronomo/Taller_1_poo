@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         int opcion;
-        boolean salir = true;
+        boolean correr = true;
 
         do{
 
@@ -19,22 +19,22 @@ public class Main {
                     ingresarDatos();
                     break;
                 case 2:
-                    System.out.printf("El mayor sismo es %f", buscarMayorSismo());
+                    System.out.printf("El mayor sismo es %f\n", buscarMayorSismo());
                     break;
                 case 3:
-                    System.out.printf("Hay %d sismos de magnitud mayor o igual a 5.0", contarSismos());
+                    System.out.printf("Hay %d sismos de magnitud mayor o igual a 5.0\n", contarSismos());
                     break;
                 case 4:
                     enviarSMS();
                     break;
                 case 5:
-                    salir = false;
+                    correr = false;
                     break;
                 default:
-                    System.out.println("Número no válido");
+                    System.out.println("Ingrese una opción valida\n");
                     break;
             }
-        }while(salir);
+        }while(correr);
     }
 
     private static void imprimirMenu(){
@@ -83,9 +83,18 @@ public class Main {
 
     }
 
-    private static int pedirCasoMenu(){
-            Scanner scanner = new Scanner(System.in);
-            int caso = scanner.nextInt();
-            return caso;
+    private static int pedirCasoMenu() {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("Ingrese una opcion: ");
+            try {
+                int opcion = Integer.parseInt(scanner.nextLine());
+                return opcion;
+            } catch (NumberFormatException e) {
+                System.out.println("Ingrese una opción valida");
+            }
         }
+    }
+
 }

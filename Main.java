@@ -2,8 +2,12 @@ import java.util.Random;
 
 public class Main {
 
+    public static double[][] sismos = new double[7][24];
+
     public static void main(String[] args){
-        imprimirMenu();
+        int caso;
+        
+        //switch (caso)
     }
 
     private static void imprimirMenu(){
@@ -14,10 +18,9 @@ public class Main {
         System.out.println("v.  Salir (S/N)");
     }
 
-    private static double[][] ingresarDatos(){
+    private static void ingresarDatos(){
         Random random = new Random();
         double numeroAleatorio;
-        double[][] sismos = new double[7][24];
 
         for(int i = 0; i < 7; i++) {
             for (int j = 0; j < 24; j++) {
@@ -25,11 +28,9 @@ public class Main {
                 sismos[i][j] = numeroAleatorio;
             }
         }
-
-        return sismos;
     }
 
-    private static double buscarMayorSismo(double[][] sismos) {
+    private static double buscarMayorSismo(){
         double mayor = -1;
         for (int i = 0; i < 7; i++)
             for (int j = 0; j < 24; j++)
@@ -38,5 +39,21 @@ public class Main {
         return mayor;
     }
 
-    //private static int contarSismos(double[][] sismos)
+    private static int contarSismos(){
+        int mayoresQueCinco = 0;
+        for (int i = 0; i < 7; i++)
+            for (int j = 0; j < 24; j++)
+                if(sismos[i][j] >= 5.0)mayoresQueCinco++;
+
+        return mayoresQueCinco;
+    }
+
+    private static void enviarSMS(){
+        for (int i = 0; i < 7; i++)
+            for (int j = 0; j < 24; j++)
+                if(sismos[i][j] >= 7.0)
+                    System.out.println("Alerta!!! se debe evacuar zona costera!");
+
+    }
 }
+

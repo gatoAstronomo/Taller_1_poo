@@ -1,13 +1,40 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
     public static double[][] sismos = new double[7][24];
 
-    public static void main(String[] args){
-        int caso;
-        
-        //switch (caso)
+    public static void main(String[] args) {
+
+        int opcion;
+        boolean salir = true;
+
+        do{
+
+            imprimirMenu();
+            opcion = pedirCasoMenu();
+            switch (opcion) {
+                case 1:
+                    ingresarDatos();
+                    break;
+                case 2:
+                    System.out.printf("El mayor sismo es %f", buscarMayorSismo());
+                    break;
+                case 3:
+                    System.out.printf("Hay %d sismos de magnitud mayor o igual a 5.0", contarSismos());
+                    break;
+                case 4:
+                    enviarSMS();
+                    break;
+                case 5:
+                    salir = false;
+                    break;
+                default:
+                    System.out.println("Número no válido");
+                    break;
+            }
+        }while(salir);
     }
 
     private static void imprimirMenu(){
@@ -55,5 +82,10 @@ public class Main {
                     System.out.println("Alerta!!! se debe evacuar zona costera!");
 
     }
-}
 
+    private static int pedirCasoMenu(){
+            Scanner scanner = new Scanner(System.in);
+            int caso = scanner.nextInt();
+            return caso;
+        }
+}
